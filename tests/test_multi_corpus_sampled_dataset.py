@@ -75,7 +75,7 @@ class TestMultiCorpusSampledDataset(unittest.TestCase):
         )
 
     def test_multi_corpus_sampled_dataset_uniform_sample(self):
-        self._test_sample_helper(expected_sample_from_first_ds_percentage=0.5)
+        self._test_sample_helper(expected_sample_from_first_ds_percentage=0.5, num_samples=200)
 
     def test_multi_corpus_sampled_dataset_weighted_sample(self):
         def naive_weighted_sample(weights):
@@ -91,5 +91,5 @@ class TestMultiCorpusSampledDataset(unittest.TestCase):
 
         self._test_sample_helper(
             expected_sample_from_first_ds_percentage=0.9,
-            sampling_func=naive_weighted_sample(weights=[0.9, 0.1]),
+            sampling_func=naive_weighted_sample(weights=[0.9, 0.1]), num_samples = 110
         )
