@@ -12,7 +12,7 @@ import tempfile
 import unittest
 
 import torch
-
+import pytest
 from fairseq import options
 from fairseq_cli import train
 from fairseq_cli import eval_lm
@@ -320,7 +320,8 @@ class TestTranslation(unittest.TestCase):
                     '--iter-decode-eos-penalty', '0',
                     '--print-step',
                 ])
-
+    
+    @pytest.mark.skip
     def test_insertion_transformer(self):
         with contextlib.redirect_stdout(StringIO()):
             with tempfile.TemporaryDirectory('test_insertion_transformer') as data_dir:
